@@ -1,0 +1,68 @@
+{% load static %}
+<script type="text/javascript" src = "{% static 'index.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+
+{% block content%}
+<body>
+      <div class="wrapper">
+         <header>
+            <nav>
+               <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+               </div>
+               <div class="logo">
+                  <img src="{% static 'logo.jpg' %}" width = "15%">
+
+               </div>
+               <div class="menu">
+                  <ul>
+                    <li><a href="{% url 'login:login' %}">Login</a></li> 
+                     <li><a href="{% url 'login:register' %}">Register</a></li>
+                  </ul>
+               </div>
+            </nav>
+         </header>
+         <div class="content">
+         	<h3>Abstract </h3>
+            <p>
+               Due to the recent pandemic depression and boredom are widespread not just in India but all around the
+               world  ,  this program is a simple but unique solution to that problem.Dijkstra’s Algorithm is used to
+               find the shortest path. The web app matches you with other people who are attending the same event and
+               who live near you. This is can lead to building up communities. People who share common interests can
+               meet each other. This can only help people socializing with others which can lead them to have a better
+               social life. This carpooling program is the modern solution for this problem.We are using Django
+               an open source web framework for this application.
+            </p>
+
+         </div>
+         <div class="content">
+         	<h3>About the algorithm</h3>
+            <p>
+            Our algorithm uses the Djikshtra’s
+               Algorithm to find the optimal path for the sources.
+               First it finds the naïve path of 1st source going to
+               the 2nd source and then to then destination.
+               Then it finds if there are any common nodes for
+               paths of 1st source and 2nd source and then makes a
+               path where the 2nd source meets the 1st source at
+               their first common node. Djikshtra algorithm is used to find the
+               distance and path of every node from a particular node as it is critical
+               to explore many paths for the 2-sourced path finding algorithm.
+            </p>
+         </div>
+<div class="content">
+         	<h3>Djikshtra’s Algorithm in General</h3>
+            <p>
+               Dijkstra's algorithm (or Dijkstra's Shortest Path First algorithm, SPF algorithm)
+               is an algorithm for finding the shortest paths between nodes in a graph, which may represent,
+               for example, road networks. It was conceived by computer scientist Edsger W.
+               Dijkstra in 1956 and published three years later.
+               The algorithm exists in many variants. Dijkstra's original algorithm found the shortest
+               path between two given nodes, but a more common variant fixes a single node as the
+               "source" node and finds shortest paths from the source to all other nodes in the graph,
+               producing a shortest-path tree.<br>
+            </p>
+         </div>
+      </div>
+   </body>
+{% endblock content %}

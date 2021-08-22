@@ -1,0 +1,93 @@
+{% load static %}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'vendor_login/bootstrap/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'fonts_login/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'fonts_login/Linearicons-Free-v1.0.0/icon-font.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor_login/animate/animate.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor_login/css-hamburgers/hamburgers.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor_login/animsition/css/animsition.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor_login/select2/select2.min.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor_login/daterangepicker/daterangepicker.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css_login/util.css'%}">
+<link rel="stylesheet" type="text/css" href="{% static 'css_login/main.css'%}">
+
+<script src="{% static 'vendor_login/daterangepicker/moment.min.js'%}"></script>
+<script src="{% static 'vendor_login/daterangepicker/daterangepicker.js'%}"></script>
+<script src="{% static 'vendor_login/countdowntime/countdowntime.js'%}"></script>
+<script src="{%static 'js_login/main.js '%}"></script>
+{% block style %}
+<style>
+.errorfield {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17;
+    color: rgb(174, 75, 75);
+  }
+  .success{
+    color:rgb(50, 163, 50);
+  }
+  </style>
+{% endblock style %}
+{% block content%}
+<body>
+
+<div class="limiter">
+    <div class="container-login100">
+        {% if messages %}
+        {% for message in messages %}
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <h5 class="errorfield success">{{ message }}</h5>
+            {% else %}
+            <h5 class="errorfield">{{ message }}</h5>
+            {% endif %}
+        {% endfor%}
+        {% endif %}
+
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" method="POST">
+                {% csrf_token %}
+                <span class="login100-form-title p-b-34">
+                    Account Login
+                </span>
+                <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
+                    <input id="first-name" class="input100" type="text" name="username" placeholder="User name" value={{form.cleaned_data.username}}>
+                    <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
+                    <input class="input100" type="password" name="password" placeholder="Password" value={{form.cleaned_data.password}}>
+                    <span class="focus-input100"></span>
+                </div>
+                
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn">
+                        Sign in
+                    </button>
+                </div>
+                {% if form.errors %}
+                    <h5 class="errorfield">{{ form.errors }}</h5>
+                    {% endif %}
+
+                <div class="w-full text-center">
+                    <a href="{% url 'login:register' %}" class="txt3">
+                        Sign Up
+                    </a>
+                </div>
+                <div class="w-full text-center">
+                    <a href="{% url 'login:index' %}" class="txt3">
+                        Main Page
+                    </a>
+            </form>
+                
+                </div>
+            <div class="login100-more" style="background-image: url('{% static 'images_login/bg-01.jpg'%}');"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="dropDownSelect1"></div>
+
+
+</body>
+{% endblock content %}
